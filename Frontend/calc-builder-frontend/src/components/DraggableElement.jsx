@@ -9,7 +9,7 @@ function DraggableElement({ id, children }) {
                 ref={setNodeRef}
                 {...attributes}
                 {...listeners}
-                className="p-2 bg-white border rounded shadow-md mb-2 cursor-grab"
+                className="p-2 bg-gray-600 text-gray-100 border rounded shadow-md mb-2 cursor-grab"
                 style={{ transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined }}
             >
                 {children}

@@ -4,19 +4,20 @@ import Sidebar from './Sidebar'
 import DropArea from './DropArea'
 
 function CalcBuilder() {
-    const [parent, setParent] = useState(null)
+    const [droppedItems, setDroppedItems] = useState([])
 
     const handleDragEnd = (e) => {
         const { over } = e;
-        setParent(over ? over.id : null);
+        if (over && over.id === 'drop-area') {
+            setDroppedItems((prev) => [...prev, e.active.id])
+        }
     }
     return (
         <>
-            <h1>Hello I am a Calculator builder</h1>
             <DndContext onDragEnd={handleDragEnd}>
                 <div className="flex h-screen">
                     <Sidebar />
-                    <DropArea parent={parent} />
+                    <DropArea droppedItems={droppedItems} setDroppedItems={setDroppedItems} />
                 </div>
             </DndContext>
         </>
