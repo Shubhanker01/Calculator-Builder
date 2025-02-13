@@ -45,7 +45,6 @@ function DropArea({ droppedItems, setDroppedItems }) {
 
     return (
         <>
-            {console.log(outputItems)}
             <div
                 ref={setNodeRef}
                 className="w-3/4 h-full bg-gray-100 p-4"

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DraggableElement from './DraggableElement'
+import useCalculatorStore from '../store'
 
 function RenderElement({ element }) {
+    const { expression, setExpression } = useCalculatorStore()
     const digits = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.']
     if (element === 'input') {
         return (
             <>
-                <input type='text' className='bg-gray-100 text-gray-800 w-[80%] rounded-md p-4 text-xl' placeholder='Enter number here'></input>
+                <p className='bg-gray-100 text-gray-800 w-[80%] rounded-md p-4 text-xl' placeholder='Enter number here' >{expression || "Your number will display here..."}</p>
 
             </>
         )
@@ -42,7 +44,7 @@ function RenderElement({ element }) {
                 {
                     digits.map((digit, ind) => {
                         return (
-                            <button className='bg-gray-800 text-gray-100 p-2 text-lg rounded-md cursor-pointer' key={ind}>{digit}</button>
+                            <button onClick={()=>setExpression(digit)} className='bg-gray-800 text-gray-100 p-2 text-lg rounded-md cursor-pointer' key={ind}>{digit}</button>
                         )
                     })
                 }

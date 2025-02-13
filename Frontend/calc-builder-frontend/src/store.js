@@ -3,7 +3,10 @@ import { create } from 'zustand'
 const useCalculatorStore = create((set) => (
     {
         outputItems: [],
-        setOutputItems: (items) => set({ outputItems: items })
+        expression: '',
+        setOutputItems: (items) => set({ outputItems: items }),
+        setExpression: (value) =>
+            set((state) => ({ expression: state.expression + value }))
     }
 ))
 
