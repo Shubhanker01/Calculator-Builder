@@ -19,7 +19,7 @@ function DropArea({ droppedItems, setDroppedItems }) {
                 <h2 className="text-lg font-semibold col-span-4">Drop Components Here</h2>
                 {droppedItems.map((item, index) => (
                     <div key={index} id={`${item}`} className="p-2 bg-gray-200 text-black rounded shadow-md hover:border-2 hover:border-double hover:border-indigo-700">
-                        <RenderElement element={item} />
+                        <RenderElement element={item} ind={index} />
                         <Trash2 size={24} onClick={() => removeItem(item)} />
                     </div>
 
