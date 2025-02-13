@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { DndContext } from '@dnd-kit/core'
+import {
+    DndContext,
+} from '@dnd-kit/core'
 import Sidebar from './Sidebar'
 import DropArea from './DropArea'
 

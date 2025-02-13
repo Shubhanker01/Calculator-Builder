@@ -1,14 +1,12 @@
 import React from 'react'
 import DraggableElement from './DraggableElement'
 
-function RenderElement({ element, ind }) {
+function RenderElement({ element }) {
     const digits = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.']
     if (element === 'input') {
         return (
             <>
-
                 <input type='text' className='bg-gray-100 text-gray-800 w-[80%] rounded-md p-4 text-xl' placeholder='Enter number here'></input>
-
 
             </>
         )
