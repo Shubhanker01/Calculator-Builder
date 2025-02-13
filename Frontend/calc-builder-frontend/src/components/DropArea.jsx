@@ -8,10 +8,13 @@ import {
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { useSensor, useSensors, PointerSensor, closestCenter, DndContext, KeyboardSensor } from '@dnd-kit/core';
-
 import SortableItem from './SortableItem';
+import useCalculatorStore from '../store';
+import { useNavigate } from 'react-router-dom';
 
 function DropArea({ droppedItems, setDroppedItems }) {
+    const navigate = useNavigate()
+    const { outputItems, setOutputItems } = useCalculatorStore()
     const { setNodeRef } = useDroppable({ id: 'drop-area' })
     const sensors = useSensors(
         useSensor(PointerSensor),
@@ -35,9 +38,14 @@ function DropArea({ droppedItems, setDroppedItems }) {
         setDroppedItems(droppedItems.filter(ele => ele !== id))
     }
 
+    const saveOutput = () => {
+        setOutputItems(droppedItems)
+        navigate('/output')
+    }
 
     return (
         <>
+            {console.log(outputItems)}
             <div
                 ref={setNodeRef}
                 className="w-3/4 h-full bg-gray-100 p-4"
@@ -62,6 +70,7 @@ function DropArea({ droppedItems, setDroppedItems }) {
 
                     </SortableContext>
                 </DndContext>
+                <button onClick={saveOutput} className='w-[200px] fixed bottom-4 right-4 bg-slate-700 font-bold rounded-md text-xl text-slate-100 p-2 hover:bg-slate-800'>Save and Continue</button>
             </div>
         </>
     )
