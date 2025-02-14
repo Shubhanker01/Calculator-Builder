@@ -6,8 +6,8 @@ function Output() {
     const { outputItems } = useCalculatorStore()
     return (
         <>
-            <div className='bg-gray-100 w-screen h-full'>
-                <div className='mx-auto'>
+            <div className='bg-gray-100 dark:bg-gray-800 w-screen h-screen flex items-center justify-center'>
+                <div className='mx-auto bg-gray-300 w-[80%]'>
                     {
                         outputItems.map((ele, ind) => {
                             return <RenderElement element={ele} key={ind}></RenderElement>

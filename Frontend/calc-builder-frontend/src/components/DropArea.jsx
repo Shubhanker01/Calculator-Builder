@@ -10,7 +10,7 @@ import { useSensor, useSensors, PointerSensor, closestCenter, DndContext, Keyboa
 import SortableItem from './SortableItem';
 import useCalculatorStore from '../store';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 function DropArea({ droppedItems, setDroppedItems }) {
     const navigate = useNavigate()
     const { outputItems, setOutputItems } = useCalculatorStore()
@@ -36,9 +36,14 @@ function DropArea({ droppedItems, setDroppedItems }) {
     }
     const removeItem = (id) => {
         setDroppedItems(droppedItems.filter(ele => ele !== id))
+        toast.info("Removed item", { position: 'top-center' })
     }
 
     const saveOutput = () => {
+        if (droppedItems.length == 0) {
+            toast.error("Add items please!!!", { position: 'top-center' })
+            return;
+        }
         setOutputItems(droppedItems)
         navigate('/output')
     }
@@ -47,7 +52,7 @@ function DropArea({ droppedItems, setDroppedItems }) {
         <>
             <div
                 ref={setNodeRef}
-                className="w-3/4 h-full bg-gray-200 dark:bg-slate-800 p-4"
+                className="w-3/4 h-[100vh] bg-gray-200 dark:bg-slate-800 p-4"
 
             >
                 <h2 className="text-lg dark:text-gray-100 font-semibold col-span-4">Drop Components Here</h2>
@@ -61,8 +66,10 @@ function DropArea({ droppedItems, setDroppedItems }) {
                         {droppedItems.map((item, index) => (
 
                             <div key={`${index}-${item}`} className='border-2 border-dashed border-indigo-600 dark:border-slate-100 m-2'>
-                                <SortableItem id={item}></SortableItem>
-                                <Trash2 className='dark:text-gray-100 text-gray-800' size={24} onClick={() => removeItem(item)} />
+                                <div>
+                                    <SortableItem id={item}></SortableItem>
+                                    <Trash2 className='dark:text-gray-100 text-gray-800' size={24} onClick={() => removeItem(item)} />
+                                </div>
                             </div>
 
                         ))}

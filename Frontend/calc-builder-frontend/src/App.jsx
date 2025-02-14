@@ -3,11 +3,13 @@ import Home from "./components/Home"
 import CalcBuilder from "./components/CalcBuilder"
 import Output from "./components/Output"
 import ToggleTheme from "./components/ToggleTheme"
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
 
   return (
     <>
+      <ToastContainer />
       <ToggleTheme />
       <Routes>
         <Route path="/" element={<Home />}></Route>

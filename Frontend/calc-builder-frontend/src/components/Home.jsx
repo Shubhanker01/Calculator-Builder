@@ -6,7 +6,7 @@ function Home() {
     return (
         <>
             <div className="min-h-screen bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-6">
-                <div className="w-[80%] shadow-lg rounded-lg p-8">
+                <div className="sm:w-[80%] w-[95%] shadow-lg rounded-lg p-8">
                     <h1 className="text-4xl dark:text-gray-100 text-gray-700  font-bold mb-6 text-center">⚡ Calculator Builder</h1>
                     <p className="text-lg dark:text-gray-200 text-gray-700 text-center mb-6">
                         Drag and drop components to create your custom calculator. Customize layouts, add buttons, and build logic easily! 🛠️
@@ -29,10 +29,12 @@ function Home() {
                         <li>Configure the functionality to define how the calculator processes inputs and displays results.</li>
                         <li>Save and test your customized calculator.</li>
                     </ol>
+                    <div className='mx-auto my-4 text-center'>
+                        <Link to='/main-app' className='text-center w-[200px] bg-gray-700 font-bold rounded-md text-xl text-slate-100 p-2 hover:bg-slate-800'>Get Started</Link>
+                    </div>
+
                 </div>
-            </div>
-            <div className='flex justify-center my-6'>
-                <Link to='/main-app' className='block text-center w-[200px] bg-slate-700 font-bold rounded-md text-xl text-slate-100 p-2 hover:bg-slate-800'>Get Started</Link>
+
             </div>
         </>
     )
