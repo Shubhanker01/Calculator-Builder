@@ -15,6 +15,7 @@ function SortableItem({ id }) {
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
+        touchAction:'none'
     };
     return (
         <>

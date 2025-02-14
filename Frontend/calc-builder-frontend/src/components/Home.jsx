@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 function Home() {
     return (
         <>
-            <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-700 flex items-center justify-center p-6">
                 <div className="max-w-3xl shadow-lg rounded-lg p-8">
-                    <h1 className="text-3xl text-center font-bold text-gray-800 mb-4">Calculator Builder</h1>
-                    <p className="text-gray-600 mb-6">
+                    <h1 className="text-3xl text-center font-bold text-gray-800 dark:text-gray-100 mb-4">Calculator Builder</h1>
+                    <p className="text-gray-600 dark:text-gray-200 mb-6">
                         Welcome to the <span className="font-semibold">Calculator Builder</span>, a dynamic tool that allows users to create and customize their own calculators with ease.
                     </p>
 

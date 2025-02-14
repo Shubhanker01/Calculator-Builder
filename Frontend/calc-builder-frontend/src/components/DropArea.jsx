@@ -43,14 +43,27 @@ function DropArea({ droppedItems, setDroppedItems }) {
         navigate('/output')
     }
 
+    const changeTheme = () => {
+        if (document.body.className === 'light') {
+            let backgroundImage = 'linear-gradient(to right, #ddd 1px, transparent 1px), linear-gradient(to bottom, #ddd 1px, transparent 1px)'
+            return backgroundImage
+        }
+
+        else {
+            let backgroundImage = `linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`
+
+            return backgroundImage
+        }
+    }
     return (
         <>
             <div
                 ref={setNodeRef}
-                className="w-3/4 h-full bg-gray-100 p-4"
-                style={{ backgroundSize: '20px 20px', backgroundImage: 'linear-gradient(to right, #ddd 1px, transparent 1px), linear-gradient(to bottom, #ddd 1px, transparent 1px)' }}
+                className="w-3/4 h-full bg-gray-100 dark:bg-[#121212] p-4"
+                style={{ backgroundSize: '20px 20px', backgroundImage: changeTheme() }}
             >
-                <h2 className="text-lg font-semibold col-span-4">Drop Components Here</h2>
+                <h2 className="text-lg dark:text-gray-100 font-semibold col-span-4">Drop Components Here</h2>
                 <DndContext sensors={sensors}
                     collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}>
@@ -69,7 +82,7 @@ function DropArea({ droppedItems, setDroppedItems }) {
 
                     </SortableContext>
                 </DndContext>
-                <button onClick={saveOutput} className='w-[200px] fixed bottom-4 right-4 bg-slate-700 font-bold rounded-md text-xl text-slate-100 p-2 hover:bg-slate-800'>Save and Continue</button>
+                <button onClick={saveOutput} className='sm:w-[200px] w-[100px] fixed bottom-4 right-4 bg-slate-700 font-bold rounded-md sm:text-xl text-sm text-slate-100 p-2 hover:bg-slate-800'>Save and Continue</button>
             </div>
         </>
     )
