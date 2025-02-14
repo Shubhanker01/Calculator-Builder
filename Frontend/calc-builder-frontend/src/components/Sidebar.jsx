@@ -15,10 +15,10 @@ function Sidebar() {
                         <p className='ml-4'>Input</p>
                     </div>
                 </DraggableElement>
-                <DraggableElement id="button">
+                <DraggableElement id="calculate">
                     <div className='flex'>
                         <Calculator size={24} />
-                        <p className='ml-4'>Button</p>
+                        <p className='ml-4'>Calculate</p>
                     </div>
                 </DraggableElement>
                 <DraggableElement id="add">

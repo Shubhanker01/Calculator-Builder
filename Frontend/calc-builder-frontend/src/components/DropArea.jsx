@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDroppable } from '@dnd-kit/core'
 import { Trash2 } from 'lucide-react'
 import {
     arrayMove,
@@ -7,7 +6,7 @@ import {
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { useSensor, useSensors, PointerSensor, closestCenter, DndContext, KeyboardSensor } from '@dnd-kit/core';
+import { useSensor, useSensors, PointerSensor, closestCenter, DndContext, KeyboardSensor, TouchSensor, useDroppable } from '@dnd-kit/core';
 import SortableItem from './SortableItem';
 import useCalculatorStore from '../store';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +16,8 @@ function DropArea({ droppedItems, setDroppedItems }) {
     const { outputItems, setOutputItems } = useCalculatorStore()
     const { setNodeRef } = useDroppable({ id: 'drop-area' })
     const sensors = useSensors(
-        useSensor(PointerSensor),
+        useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+        useSensor(TouchSensor, { activationConstraint: { delay: 200, tolerance: 5 } }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         })
