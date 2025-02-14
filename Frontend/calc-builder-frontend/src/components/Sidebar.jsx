@@ -6,7 +6,7 @@ function Sidebar() {
 
     return (
         <>
-            <div className="w-1/4 dark:bg-gray-800 dark:text-gray-100 bg-gray-200 text-gray-800 p-4 h-screen border-r border-gray-300">
+            <div className="w-1/4 dark:bg-gray-800 dark:text-gray-100 bg-slate-200 text-gray-800 p-4 h-screen border-r border-gray-300">
                 <h2 className="text-lg text-gray-700 dark:text-gray-200 font-semibold mb-4">Elements</h2>
 
                 <DraggableElement id="input">

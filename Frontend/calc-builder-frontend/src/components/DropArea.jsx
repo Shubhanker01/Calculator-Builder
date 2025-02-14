@@ -43,25 +43,12 @@ function DropArea({ droppedItems, setDroppedItems }) {
         navigate('/output')
     }
 
-    const changeTheme = () => {
-        if (document.body.className === 'light') {
-            let backgroundImage = 'linear-gradient(to right, #ddd 1px, transparent 1px), linear-gradient(to bottom, #ddd 1px, transparent 1px)'
-            return backgroundImage
-        }
-
-        else {
-            let backgroundImage = `linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`
-
-            return backgroundImage
-        }
-    }
     return (
         <>
             <div
                 ref={setNodeRef}
-                className="w-3/4 h-full bg-gray-100 dark:bg-[#121212] p-4"
-                style={{ backgroundSize: '20px 20px', backgroundImage: changeTheme() }}
+                className="w-3/4 h-full bg-gray-200 dark:bg-slate-800 p-4"
+
             >
                 <h2 className="text-lg dark:text-gray-100 font-semibold col-span-4">Drop Components Here</h2>
                 <DndContext sensors={sensors}
@@ -73,9 +60,9 @@ function DropArea({ droppedItems, setDroppedItems }) {
                     >
                         {droppedItems.map((item, index) => (
 
-                            <div key={`${index}-${item}`}>
+                            <div key={`${index}-${item}`} className='border-2 border-dashed border-indigo-600 dark:border-slate-100 m-2'>
                                 <SortableItem id={item}></SortableItem>
-                                <Trash2 size={24} onClick={() => removeItem(item)} />
+                                <Trash2 className='dark:text-gray-100 text-gray-800' size={24} onClick={() => removeItem(item)} />
                             </div>
 
                         ))}
